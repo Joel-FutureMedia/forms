@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:8383',
+      target: 'https://clientform.simplyfound.com.na',
       changeOrigin: true,
       secure: true,
       logLevel: 'debug',
