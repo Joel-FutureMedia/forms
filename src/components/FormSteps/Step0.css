@@ -1,0 +1,62 @@
+.step0 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.step0-logo {
+  margin-bottom: 30px;
+}
+
+.step0-logo img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  min-width: 300px;
+}
+
+.step0-header {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.step0-subtext {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.step0-cta {
+  font-size: 18px;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #808080 0%, #606060 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.step0-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(128, 128, 128, 0.5);
+}
+
+.step0-cta:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .step0-header {
+    font-size: 24px;
+  }
+  
+  .step0-logo img {
+    max-width: 300px;
+    min-width: 200px;
+  }
+}
+
