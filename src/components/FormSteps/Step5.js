@@ -139,7 +139,7 @@ function Step5({ formData, updateFormData, onNext, onPrev }) {
             {layoutStyles.map(style => (
               <div
                 key={style.id}
-                className={`layout-style-card ${formData.layoutStyleId == style.id ? 'selected' : ''}`}
+                className={`layout-style-card ${formData.layoutStyleId === style.id ? 'selected' : ''}`}
                 onClick={() => updateFormData({ layoutStyleId: Number(style.id) })}
               >
                 <h4>{style.style}</h4>

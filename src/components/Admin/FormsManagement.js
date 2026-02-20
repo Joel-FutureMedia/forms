@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { getClientJourneys, downloadPromptPdf, downloadLogo, downloadImage } from '../../services/api';
 import './FormsManagement.css';
 
@@ -7,11 +7,7 @@ function FormsManagement() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadForms();
-  }, []);
-
-  const loadForms = async (retryCount = 0) => {
+  const loadForms = useCallback(async (retryCount = 0) => {
     setLoading(true);
     setError(null);
     try {
@@ -51,7 +47,11 @@ function FormsManagement() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadForms();
+  }, [loadForms]);
 
   const handleDownloadPrompt = async (id) => {
     try {

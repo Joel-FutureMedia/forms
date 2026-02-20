@@ -12,6 +12,7 @@ function Step2({ formData, updateFormData, onNext, onPrev }) {
   const inputRef = useRef(null);
   const arrowRef = useRef(null);
 
+  // Fetch industries on mount
   useEffect(() => {
     getIndustries()
       .then(res => {
@@ -38,16 +39,6 @@ function Step2({ formData, updateFormData, onNext, onPrev }) {
         
         setIndustries(industriesList);
         setFilteredIndustries(industriesList);
-        
-        // Set initial input value if industryId is already selected
-        if (formData.industryId) {
-          const selectedIndustry = industriesList.find(ind => ind.id === Number(formData.industryId));
-          if (selectedIndustry) {
-            setIndustryInput(selectedIndustry.industry || selectedIndustry.name || '');
-          }
-        } else if (formData.industryName) {
-          setIndustryInput(formData.industryName);
-        }
       })
       .catch(err => {
         console.error('Error fetching industries:', err);
@@ -55,6 +46,18 @@ function Step2({ formData, updateFormData, onNext, onPrev }) {
         setFilteredIndustries([]);
       });
   }, []);
+
+  // Sync input value with formData when industryId or industryName changes
+  useEffect(() => {
+    if (formData.industryId && industries.length > 0) {
+      const selectedIndustry = industries.find(ind => ind.id === Number(formData.industryId));
+      if (selectedIndustry) {
+        setIndustryInput(selectedIndustry.industry || selectedIndustry.name || '');
+      }
+    } else if (formData.industryName) {
+      setIndustryInput(formData.industryName);
+    }
+  }, [formData.industryId, formData.industryName, industries]);
 
   // Update filtered industries when input changes
   useEffect(() => {

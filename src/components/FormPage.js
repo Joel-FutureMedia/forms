@@ -53,7 +53,6 @@ function FormPage() {
     ctaLinkOrPhone: '',
     secondaryAction: '',
   });
-  const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const nextStep = () => {
@@ -104,8 +103,7 @@ function FormPage() {
         layoutStyleId: formData.layoutStyleId && formData.layoutStyleId !== '' ? Number(formData.layoutStyleId) : null,
       };
       
-      const response = await submitForm(cleanFormData);
-      setSubmitted(true);
+      await submitForm(cleanFormData);
       setCurrentStep(8);
     } catch (error) {
       console.error('Form submission error:', error);
