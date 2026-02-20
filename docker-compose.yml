@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: simplyforms-frontend
+    ports:
+      - "3004:3004"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
